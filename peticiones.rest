@@ -1,0 +1,99 @@
+
+
+@host = http://localhost:3000
+@apiProducts = /api/products
+@apiUsers = /api/users
+
+#############API PRODUCTS##################
+
+### GET ALL
+GET {{host}}{{apiProducts}}
+
+
+### FILTRAR PRODUCTO POR PRECIO
+GET {{host}}{{apiProducts}}/price/120
+
+
+### FILTRAR PRODUCTO POR DEPARTAMENTO
+GET {{host}}{{apiProducts}}/department/home
+
+
+### NUEVO PRODUCTO
+POST {{host}}{{apiProducts}}
+Content-Type: application/json
+
+{
+    "name": "Pantalones",
+    "description": "Color azul",
+    "price": 20,
+    "departmet": "man",
+    "available": true,
+    "stock": 28
+}
+
+
+
+
+### BORRAR PRODUCTO
+PUT {{host}}{{apiProducts}}/642adb458830046913a65c92
+
+
+### EDITAR PRODUCTO
+PUT {{host}}{{apiProducts}}/stock
+
+
+
+### EDITAR PRODUCTO
+PUT {{host}}{{apiProducts}}/642adb458830046913a65c92
+Content-Type: application/json
+
+{
+    "name": "Corbata",
+    "description": "Color negra",
+    "price": 18,
+    "departmet": "man",
+    "available": true,
+    "stock": 12
+}
+
+
+
+#############API USERS##################
+
+### GET ALL
+GET {{host}}{{apiUsers}}
+
+
+###GET ONE
+GET {{host}}{{apiUsers}}/buy/642adb458830046913a65c92
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQyYmZhNjlkMjNlMmQwM2MyMzA3MGM0Iiwicm9sZSI6InJlZ3VsYXIiLCJleHAiOjE2ODExMjE2MTYsImlhdCI6MTY4MDY4OTYxNn0.oZVigQO-RqdZdBteIAw9bJ2JIxvFvIMZTDiOihjDoDA
+
+
+### CARRITO 
+GET {{host}}{{apiUsers}}/buy/cart
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQyYmZhNjlkMjNlMmQwM2MyMzA3MGM0Iiwicm9sZSI6InJlZ3VsYXIiLCJleHAiOjE2ODExMjE2MTYsImlhdCI6MTY4MDY4OTYxNn0.oZVigQO-RqdZdBteIAw9bJ2JIxvFvIMZTDiOihjDoDA
+
+
+
+### NUEVO USUARIO
+POST {{host}}{{apiUsers}}/register
+Content-Type: application/json
+
+{
+    "username": "Pablo",
+    "email": "pp@gmail.com",
+    "password": "12345",
+    "role": "regular",
+    "active": true
+}
+
+
+
+### LOGIN
+POST {{host}}{{apiUsers}}/login
+Content-Type: application/json
+
+{
+    "email": "pp@gmail.com",
+    "password": "12345"
+}
